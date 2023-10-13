@@ -9,14 +9,14 @@ services:
     ports:
       - "8080:8080"
     volumes:
-      - ./:/app/
+      - .:/app/
     labels:
-       - "traefik.enable=true"
-       #SSL
-       #Troque pelo seu dominio
-       - "traefik.http.routers.sites.rule=Host(`semana.landmatos.com.br`)"
-       - "traefik.http.routers.sites.entrypoints=web,websecure"
-       - "traefik.http.routers.sites.tls.certresolver=leresolver"
+      - "traefik.enable=true"
+      #SSL
+      #Troque pelo seu dominio
+      - "traefik.http.routers.sites.rule=Host(`semana.landmatos.com.br`)"
+      - "traefik.http.routers.sites.entrypoints=web,websecure"
+      - "traefik.http.routers.sites.tls.certresolver=leresolver"
     networks:
       - sites
 
