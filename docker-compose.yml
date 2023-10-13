@@ -1,0 +1,25 @@
+version: '3'
+
+services:
+  nginx:
+    image: docker.io/bitnami/nginx:1.25.2-debian-11-r37
+    environment:
+      - BITNAMI_DEBUG=true
+      - NGINX_HTTP_PORT_NUMBER=8080
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./:/app/
+    labels:
+       - "traefik.enable=true"
+       #SSL
+       #Troque pelo seu dominio
+       - "traefik.http.routers.sites.rule=Host(`semana.landmatos.com.br`)"
+       - "traefik.http.routers.sites.entrypoints=web,websecure"
+       - "traefik.http.routers.sites.tls.certresolver=leresolver"
+    networks:
+      - sites
+
+networks:
+  sites:
+    external: true
