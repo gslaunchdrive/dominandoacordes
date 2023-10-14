@@ -37,7 +37,7 @@ services:
     depends_on:
       - git-repo-syncer
     volumes:
-      - staticsite:/app/ 
+      - staticsite:/opt/bitnami/nginx/html/
     labels:
        - "traefik.enable=true"
        #SSL
