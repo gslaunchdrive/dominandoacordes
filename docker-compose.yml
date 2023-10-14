@@ -1,24 +1,55 @@
 version: '3'
 
 services:
+  git-repo-syncer:
+    image: docker.io/bitnami/git:2.42.0-debian-11-r45
+    environment:
+      - BITNAMI_DEBUG=true
+    command:
+      - /bin/bash
+      - -ec
+      - |
+        [[ -f "/opt/bitnami/scripts/git/entrypoint.sh" ]] && source "/opt/bitnami/scripts/git/entrypoint.sh"
+        sleep 2
+        cd /app
+        pasta="dominandoacordes"
+        if [ ! -d "$pasta" ]; then
+          git clone https://github.com/gslaunchdrive/dominandoacordes.git
+        fi
+        ls
+        while true; do
+          git pull
+          sleep 180
+        done
+        
+    volumes:
+      - staticsite:/app/dominandoacordes
+    networks:
+      - sites
+
   nginx:
-    image: nginx:latest
+    image: docker.io/bitnami/nginx:1.25.2-debian-11-r37
     environment:
       - BITNAMI_DEBUG=true
       - NGINX_HTTP_PORT_NUMBER=8080
     ports:
       - "8080:8080"
+    depends_on:
+      - git-repo-syncer
     volumes:
-      - .:/usr/share/nginx/html/
+      - staticsite:/app/ 
     labels:
-      - "traefik.enable=true"
-      #SSL
-      #Troque pelo seu dominio
-      - "traefik.http.routers.sites.rule=Host(`semana.landmatos.com.br`)"
-      - "traefik.http.routers.sites.entrypoints=web,websecure"
-      - "traefik.http.routers.sites.tls.certresolver=leresolver"
+       - "traefik.enable=true"
+       #SSL
+       #Troque pelo seu dominio
+       - "traefik.http.routers.sites.rule=Host(`semana.landmatos.com.br`)"
+       - "traefik.http.routers.sites.entrypoints=web,websecure"
+       - "traefik.http.routers.sites.tls.certresolver=leresolver"
     networks:
       - sites
+
+volumes:
+  staticsite:
 
 networks:
   sites:
