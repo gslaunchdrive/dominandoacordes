@@ -9,7 +9,7 @@ services:
     ports:
       - "8080:8080"
     volumes:
-      - .:/app/
+      - .:/usr/share/nginx/html
     labels:
       - "traefik.enable=true"
       #SSL
