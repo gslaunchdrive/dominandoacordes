@@ -81,6 +81,10 @@
     font-weight: 700;
 }
 
+#section-5 a {
+    cursor: pointer;
+}
+
 #section-9 a.btn,
 #section-12 a.btn {
     margin: 45px 0;
