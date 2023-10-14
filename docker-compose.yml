@@ -2,7 +2,7 @@ version: '3'
 
 services:
   nginx:
-    image: docker.io/bitnami/nginx:1.25.2-debian-11-r37
+    image: nginx:latest
     environment:
       - BITNAMI_DEBUG=true
       - NGINX_HTTP_PORT_NUMBER=8080
