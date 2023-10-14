@@ -9,17 +9,15 @@ services:
       - /bin/bash
       - -ec
       - |
-        [[ -f "/opt/bitnami/scripts/git/entrypoint.sh" ]] && source "/opt/bitnami/scripts/git/entrypoint.sh"
-        sleep 2
-        cd /app
-        pasta="dominandoacordes"
-        if [ ! -d "$pasta" ]; then
-          git clone https://github.com/gslaunchdrive/dominandoacordes.git
-        fi
-        ls
         while true; do
-          git pull
-          sleep 180
+          mkdir fake
+          cd fake
+          git clone https://github.com/gslaunchdrive/dominandoacordes.git
+          cd dominandoacordes
+          cp -Rf . /app/dominandoacordes
+          cd /
+          rm -rf fake
+          sleep 300
         done
         
     volumes:
@@ -37,7 +35,7 @@ services:
     depends_on:
       - git-repo-syncer
     volumes:
-      - staticsite:/opt/bitnami/nginx/html/
+      - staticsite:/app/ 
     labels:
        - "traefik.enable=true"
        #SSL
