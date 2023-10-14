@@ -1,7 +1,7 @@
 version: '3'
 
 services:
-  nginx:
+  site:
     image: nginx:latest
     environment:
       - BITNAMI_DEBUG=true
@@ -10,6 +10,7 @@ services:
       - "8080:8080"
     volumes:
       - .:/usr/share/nginx/html
+      - ./nginx.conf:/etc/nginx/nginx.conf
     labels:
       - "traefik.enable=true"
       #SSL
@@ -23,3 +24,15 @@ services:
 networks:
   sites:
     external: true
+
+# version: '3'
+# services:
+#   nginx:
+#     image: nginx
+#     container_name: meu_nginx
+#     ports:
+#       - "80:80"
+#     volumes:
+#       - .:/usr/share/nginx/html
+#       - ./nginx.conf:/etc/nginx/nginx.conf
+#     restart: always
