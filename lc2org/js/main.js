@@ -97,11 +97,11 @@ $(document).ready(function () {
 
     var params = URLToArray(window.location.href)
     if (params) {
-      $("[name='field[34]']").val(params['utm_source']);
-      $("[name='field[35]']").val(params['utm_campaign']);
-      $("[name='field[36]']").val(params['utm_medium']);
-      $("[name='field[39]']").val(params['utm_content']);
-      $("[name='field[38]']").val(params['utm_term']);
+      $("[name='field[43]']").val(params['utm_source']);
+      $("[name='field[44]']").val(params['utm_campaign']);
+      $("[name='field[49]']").val(params['utm_medium']);
+      $("[name='field[47]']").val(params['utm_content']);
+      $("[name='field[46]']").val(params['utm_term']);
     }
   }
 
