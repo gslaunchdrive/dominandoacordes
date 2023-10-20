@@ -12,43 +12,16 @@ h5 {
 }
 
 button#_form_43_submit {
-    text-shadow: 1px 2px black;
+    text-shadow: 2px 2px black;
+    border-radius: 5px;
+    margin: 10px 0;
+    width: 500px;
+    font-size: xx-large;
+    max-width: 100%;
+    border-radius: 15px;
+    box-shadow: 4px 5px #105b01;
+    font-weight: 700;
 }
-
-
-/* #section-1 {
-    margin-bottom: -1px;
-}
-
-#section-1 .parallax {
-    padding-top: 65px;
-    overflow: hidden;
-    width: 100%;
-    background-color: #000;
-    background-attachment: fixed;
-    background-size: cover;
-    -moz-background-size: cover;
-    -webkit-background-size: cover;
-    background-repeat: no-repeat;
-    background-position: top center;
-}
-
-#section-1 h1 {
-    text-shadow: 1px 3px black;
-}
-
-#section-1 .rounded-3 {
-    border-radius: 5px 5px 0 0 !important;
-    border: 0px solid #07da00 !important;
-}
-
-#section-1 iframe {
-    padding: 0;
-    border-radius: 5px 5px 0 0 !important;
-    max-height: 600px;
-    width: 100%;
-    margin-bottom: -5px;
-} */
 
 #section-1 .parallax {
     padding: 20px 0px;
@@ -181,6 +154,10 @@ button#_form_43_submit {
     cursor: pointer;
 }
 
+#section-4 img {
+    max-width: 90%;
+}
+
 #section-9 a.btn,
 #section-12 a.btn {
     margin: 45px 0;
@@ -259,6 +236,44 @@ footer {
     }
     #section-1 h4{
         text-align: center !important;
+    }
+}
+
+@media screen and (max-width: 426px) {
+    #section-1 .bg-form{
+        padding: 0 10px;
+    }
+    #section-1 .event {
+        font-size: 1.1rem;
+        font-weight: 500;
+    }
+    #_form_652F214AB2E5F_ {
+        margin: 5px auto 0 !important;
+        padding: 10px !important;
+    }
+    #section-1 img {
+        width: 250px;
+    }
+    .lead {
+        font-size: 1.1rem;
+    }
+    #section-3,
+    #section-5-1 {
+        text-align: center;
+    }
+    #section-4 h5{
+        font-weight: 500;
+    }
+    #section-4 a.btn, #section-5-1 a.btn, #section-11 a.btn, #section-12 a.btn {
+        font-size: large;
+        max-width: 90%;
+        margin: 20px 5%;
+    }
+    #section-6 .lead {
+        text-align: center;
+    }
+    #section-11 {
+        text-align: center;
     }
 
 }
